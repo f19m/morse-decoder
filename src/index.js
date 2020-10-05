@@ -36,9 +36,29 @@ const MORSE_TABLE = {
     '----.':  '9',
     '-----':  '0',
 };
+// 10 - .
+// 11 - -
+
 
 function decode(expr) {
-    // write your solution here
+    let str='';
+    let res = '';
+    
+    while (expr.length > 0){
+        str = expr.substring(0, 10).replace(/00/g,'').replace(/10/g,'.').replace(/11/g,'-')
+        expr = expr.substring(10, expr.length);
+
+        if (str=='**********'){
+            res = res + ' ';
+        }else{
+            res = res +   MORSE_TABLE[str]
+        }
+
+
+    }
+
+    return res;
+
 }
 
 module.exports = {
